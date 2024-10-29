@@ -1,4 +1,4 @@
 package org.agprojeto.projetoscrumagendadecontatos.controller;
 
-public class controller {
+public class ContatoController {
 }

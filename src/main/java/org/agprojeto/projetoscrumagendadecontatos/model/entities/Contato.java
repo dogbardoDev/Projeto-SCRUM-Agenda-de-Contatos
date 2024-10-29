@@ -2,9 +2,11 @@ package org.agprojeto.projetoscrumagendadecontatos.model.entities;
 
 public class Contato {
 
+    private Integer id;
     private String nome;
     private String sobrenome;
     private String numero;
+    private String numero2;
     private String email;
     private String descricao;
 
@@ -16,6 +18,14 @@ public class Contato {
         this.numero = numero;
         this.email = email;
         this.descricao = descricao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -40,6 +50,14 @@ public class Contato {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getNumero2() {
+        return numero2;
+    }
+
+    public void setNumero2(String numero2) {
+        this.numero2 = numero2;
     }
 
     public String getEmail() {

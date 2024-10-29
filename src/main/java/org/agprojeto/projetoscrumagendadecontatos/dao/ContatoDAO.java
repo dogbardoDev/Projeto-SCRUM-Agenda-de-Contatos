@@ -4,8 +4,8 @@ import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 
 public interface ContatoDAO {
 
-    void inserirContato(ContatoDTO cliente);
-    void atualizarContato(ContatoDTO cliente);
+    void inserirContato(ContatoDTO contatoDTO);
+    void atualizarContato(ContatoDTO contatoDTO);
     void excluirContato(Integer id);
 
 }

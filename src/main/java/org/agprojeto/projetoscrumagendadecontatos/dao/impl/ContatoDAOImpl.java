@@ -48,12 +48,35 @@ public class ContatoDAOImpl implements ContatoDAO {
     }
 
     @Override
-    public void atualizarContato(ContatoDTO cliente) {
+    public void atualizarContato(ContatoDTO contatoDTO) {
+        String sql = "update contatos set nome = ?, sobrenome = ?, numero = ?, numero2 = ?, email = ?, descricao = ? where id = ?";
+        try(PreparedStatement st = conexao.prepareStatement(sql)){
 
+            st.setString(1, contatoDTO.getNome());
+            st.setString(2, contatoDTO.getSobrenome());
+            st.setString(3, contatoDTO.getNumero());
+            st.setString(4, contatoDTO.getNumero2());
+            st.setString(5, contatoDTO.getEmail());
+            st.setString(6, contatoDTO.getDescricao());
+            st.setInt(7, contatoDTO.getId());
+            st.executeUpdate();
+
+        }catch (SQLException e){
+            throw new DBException("Erro ao atualizar Contato" + e.getMessage() + " | " + e );
+        }
     }
 
     @Override
     public void excluirContato(Integer id) {
+        String sql = "delete from contatos where id = ?";
 
+        try(PreparedStatement st = conexao.prepareStatement(sql)){
+
+            st.setInt(1, id);
+            st.executeUpdate();
+
+        }catch(SQLException e){
+            throw new DBException("Erro ao excluir Contato");
+        }
     }
 }

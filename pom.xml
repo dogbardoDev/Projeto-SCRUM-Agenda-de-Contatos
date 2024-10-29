@@ -70,7 +70,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.agprojeto.projetoscrumagendadecontatos/org.agprojeto.projetoscrumagendadecontatos.HelloApplication
+                                org.agprojeto.projetoscrumagendadecontatos/org.agprojeto.projetoscrumagendadecontatos.view.TelaContatos
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

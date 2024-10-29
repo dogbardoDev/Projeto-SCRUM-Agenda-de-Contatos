@@ -10,9 +10,11 @@ public class Contato {
     private String email;
     private String descricao;
 
-    public Contato() {}
+    public Contato() {
+    }
 
-    public Contato(String nome, String sobrenome, String numero, String email, String descricao) {
+    public Contato(Integer id, String nome, String sobrenome, String numero, String email, String descricao) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.numero = numero;

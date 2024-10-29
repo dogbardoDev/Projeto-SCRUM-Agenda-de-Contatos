@@ -8,6 +8,7 @@ public class ContatoMapper {
 
     private static final ModelMapper modelMapper = new ModelMapper();
 
+
     public static ContatoDTO toDTO(Contato contato) {
         if (contato == null) {
             return null;

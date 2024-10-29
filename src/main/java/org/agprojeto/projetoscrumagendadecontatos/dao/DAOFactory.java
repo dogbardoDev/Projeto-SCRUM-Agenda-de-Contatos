@@ -5,7 +5,7 @@ import org.agprojeto.projetoscrumagendadecontatos.db.DB;
 
 public class DAOFactory {
 
-    public static ContatoDAO criarClienteDAO() {
+    public static ContatoDAO criarContatoDAO() {
         return new ContatoDAOImpl(DB.getConexao());
     }
 }

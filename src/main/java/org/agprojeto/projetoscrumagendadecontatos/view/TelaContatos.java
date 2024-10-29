@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TelaContatos extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(TelaContatos.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TelaContatos.class.getResource("TelaContatos.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 640);
         stage.setResizable(false);
         stage.setTitle("Agenda de Contatos");

@@ -9,7 +9,6 @@ public class ContatoDTO {
     private String email;
     private String descricao;
 
-    // Construtor
     public ContatoDTO(Integer id, String nome, String sobrenome, String numero, String numero2, String email, String descricao) {
         this.id = id;
         this.nome = nome;
@@ -20,7 +19,7 @@ public class ContatoDTO {
         this.descricao = descricao;
     }
 
-    // Getters
+
     public Integer getId() {
         return id;
     }
@@ -49,7 +48,6 @@ public class ContatoDTO {
         return descricao;
     }
 
-    // Setters
     public void setId(Integer id) {
         this.id = id;
     }

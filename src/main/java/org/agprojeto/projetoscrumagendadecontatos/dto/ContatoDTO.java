@@ -9,7 +9,10 @@ public class ContatoDTO {
     private String email;
     private String descricao;
 
-    // Construtor
+    // Construtores
+
+    public ContatoDTO() {}
+
     public ContatoDTO(Integer id, String nome, String sobrenome, String numero, String numero2, String email, String descricao) {
         this.id = id;
         this.nome = nome;

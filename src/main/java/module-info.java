@@ -6,9 +6,7 @@ module org.agprojeto.projetoscrumagendadecontatos {
 
     exports org.agprojeto.projetoscrumagendadecontatos.dto;
     exports org.agprojeto.projetoscrumagendadecontatos.model.entities;
-    opens org.agprojeto.projetoscrumagendadecontatos to javafx.fxml;
     exports org.agprojeto.projetoscrumagendadecontatos.view.controller;
-    exports org.agprojeto.projetoscrumagendadecontatos;
     opens org.agprojeto.projetoscrumagendadecontatos.view.controller to javafx.fxml;
     exports org.agprojeto.projetoscrumagendadecontatos.view;
     opens org.agprojeto.projetoscrumagendadecontatos.view to javafx.fxml;

@@ -75,4 +75,17 @@ public class ContatoDTO {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Override
+    public String toString() {
+        return "ContatoDTO{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", numero='" + numero + '\'' +
+                ", numero2='" + numero2 + '\'' +
+                ", email='" + email + '\'' +
+                ", descricao='" + descricao + '\'' +
+                '}';
+    }
 }

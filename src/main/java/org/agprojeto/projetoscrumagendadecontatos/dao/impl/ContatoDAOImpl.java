@@ -7,6 +7,8 @@ import org.agprojeto.projetoscrumagendadecontatos.mapper.ContatoMapper;
 import org.agprojeto.projetoscrumagendadecontatos.model.entities.Contato;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContatoDAOImpl implements ContatoDAO {
 
@@ -78,5 +80,53 @@ public class ContatoDAOImpl implements ContatoDAO {
         }catch(SQLException e){
             throw new DBException("Erro ao excluir Contato");
         }
+    }
+
+    @Override
+    public ContatoDTO buscarContatoPorId(Integer id) {
+        String sql = "select * from contatos where id = ?";
+        ContatoDTO contatoDTO;
+
+        try(PreparedStatement st = conexao.prepareStatement(sql)){
+            st.setInt(1, id);
+
+            try(ResultSet resultSet = st.executeQuery()){
+                if (resultSet.next()) {
+                    contatoDTO = instaciarContato(resultSet);
+                }else
+                    contatoDTO = null;
+            }
+        }catch (SQLException e){
+            throw new DBException("Erro ao buscar Contato com ID = " + id + " " + e.getMessage());
+        }
+        return contatoDTO;
+    }
+
+    @Override
+    public List<ContatoDTO> listarTodosOsContatos() {
+        List<ContatoDTO> contatos = new ArrayList<>();
+        try (PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM contatos");
+             ResultSet resultSet = stmt.executeQuery()) {
+
+            while (resultSet.next()) {
+                contatos.add(instaciarContato(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new DBException("Erro ao listar Contatos: " + e.getMessage());
+        }
+        return contatos;
+    }
+
+
+    private ContatoDTO instaciarContato(ResultSet resultSet) throws SQLException {
+        return new ContatoDTO(
+                resultSet.getInt("id"),
+                resultSet.getString("nome"),
+                resultSet.getString("sobrenome"),
+                resultSet.getString("numero"),
+                resultSet.getString("numero2"),
+                resultSet.getString("email"),
+                resultSet.getString("descricao")
+        );
     }
 }

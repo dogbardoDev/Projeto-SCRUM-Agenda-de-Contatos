@@ -23,8 +23,8 @@
             </Label>
             <TableView id="TabelaContatos" layoutY="100.0" prefHeight="470.0" prefWidth="400.0" style="-fx-background-color: white;">
               <columns>
-                <TableColumn id="colunaIcon" prefWidth="75.0" />
-                  <TableColumn id="colunaNome" prefWidth="324.00001525878906" />
+                <TableColumn id="colunaIcon" prefWidth="45.60003739595413" />
+                  <TableColumn id="colunaNome" prefWidth="354.39997482299805" />
               </columns>
             </TableView>
             <Button layoutX="36.0" layoutY="573.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: red;" text="Excluir" />

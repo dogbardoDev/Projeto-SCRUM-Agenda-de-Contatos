@@ -67,7 +67,7 @@
          </children>
       </AnchorPane>
       <Button fx:id="btnVoltarContato" layoutX="80.0" layoutY="585.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Voltar" textFill="WHITE" />
-      <Button fx:id="btnSalvarContato" layoutX="236.0" layoutY="585.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Salvar" textFill="WHITE" />
+      <Button fx:id="btnSalvarContato" layoutX="236.0" layoutY="585.0" mnemonicParsing="false" onAction="#salvarContato" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Salvar" textFill="WHITE" />
       <AnchorPane layoutX="34.0" layoutY="105.0" prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: gray; -fx-background-radius: 6;">
          <children>
             <Label layoutX="14.0" layoutY="4.0" text="Nome">

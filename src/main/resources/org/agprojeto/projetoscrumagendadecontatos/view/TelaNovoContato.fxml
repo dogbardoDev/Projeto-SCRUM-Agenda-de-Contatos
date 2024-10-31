@@ -32,13 +32,13 @@
                   <Image url="@../icones/icons8-phone-32.png" />
                </image>
             </ImageView>
-            <TextField id="TextFieldTelefone" layoutX="60.0" layoutY="35.0" prefHeight="26.0" prefWidth="270.0" promptText="Telefone 1" />
+            <TextField id="TextFieldTelefone" fx:id="txtNumero1Contato" layoutX="60.0" layoutY="35.0" prefHeight="26.0" prefWidth="270.0" promptText="Telefone 1" />
             <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="14.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icones/icons8-phone-32.png" />
                </image>
             </ImageView>
-            <TextField id="TextFieldTelefone2" layoutX="60.0" layoutY="78.0" prefHeight="26.0" prefWidth="270.0" promptText="(Opcional)" />
+            <TextField id="TextFieldTelefone2" fx:id="txtNumero2Contato" layoutX="60.0" layoutY="78.0" prefHeight="26.0" prefWidth="270.0" promptText="(Opcional)" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="333.0" prefHeight="100.0" prefWidth="340.0" style="-fx-background-color: gray; -fx-background-radius: 6px;">
@@ -53,7 +53,7 @@
                   <Image url="@../icones/icons8-email-32.png" />
                </image>
             </ImageView>
-            <TextField layoutX="60.0" layoutY="48.0" prefHeight="26.0" prefWidth="270.0" promptText="(Opcional)" />
+            <TextField fx:id="txtEmailContato" layoutX="60.0" layoutY="48.0" prefHeight="26.0" prefWidth="270.0" promptText="(Opcional)" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="450.0" prefHeight="115.0" prefWidth="340.0" style="-fx-background-color: gray; -fx-background-radius: 6;">
@@ -63,11 +63,11 @@
                   <Font name="Times New Roman" size="17.0" />
                </font>
             </Label>
-            <TextArea layoutX="11.0" layoutY="25.0" prefHeight="80.0" prefWidth="319.0" />
+            <TextArea fx:id="txtDescricaoContato" layoutX="11.0" layoutY="25.0" prefHeight="80.0" prefWidth="319.0" promptText="(Opcional)" />
          </children>
       </AnchorPane>
-      <Button layoutX="80.0" layoutY="585.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Voltar" textFill="WHITE" />
-      <Button layoutX="236.0" layoutY="585.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Salvar" textFill="WHITE" />
+      <Button fx:id="btnVoltarContato" layoutX="80.0" layoutY="585.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Voltar" textFill="WHITE" />
+      <Button fx:id="btnSalvarContato" layoutX="236.0" layoutY="585.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Salvar" textFill="WHITE" />
       <AnchorPane layoutX="34.0" layoutY="105.0" prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: gray; -fx-background-radius: 6;">
          <children>
             <Label layoutX="14.0" layoutY="4.0" text="Nome">
@@ -80,7 +80,7 @@
                   <Image url="@../icones/icons8-male-user-32.png" />
                </image>
             </ImageView>
-            <TextField layoutX="46.0" layoutY="32.0" prefHeight="26.0" prefWidth="105.0" promptText="Nome" />
+            <TextField fx:id="txtNomeContato" layoutX="46.0" layoutY="32.0" prefHeight="26.0" prefWidth="105.0" promptText="Nome" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="211.0" layoutY="105.0" prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: gray; -fx-background-radius: 6;">
@@ -95,7 +95,7 @@
                   <Image url="@../icones/icons8-male-user-32.png" />
                </image>
             </ImageView>
-            <TextField layoutX="46.0" layoutY="33.0" prefHeight="26.0" prefWidth="105.0" promptText="(Opcional)" />
+            <TextField fx:id="txtSobrenomeContato" layoutX="46.0" layoutY="33.0" prefHeight="26.0" prefWidth="105.0" promptText="(Opcional)" />
          </children>
       </AnchorPane>
    </children>

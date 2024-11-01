@@ -1,22 +1,24 @@
 package org.agprojeto.projetoscrumagendadecontatos.view.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.agprojeto.projetoscrumagendadecontatos.controller.ContatoController;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
+import org.agprojeto.projetoscrumagendadecontatos.util.Alertas;
 import org.agprojeto.projetoscrumagendadecontatos.util.Restricoes;
+import org.agprojeto.projetoscrumagendadecontatos.view.App;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.exceptions.ValidacaoException;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.validationcontato.ContatoValidator;
-import org.agprojeto.projetoscrumagendadecontatos.view.observer.ContatoObserver;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaNovoContatoController implements Initializable, ContatoObserver {
+public class TelaNovoContatoController implements Initializable {
 
     @FXML
     private TextField txtNomeContato;
@@ -45,7 +47,7 @@ public class TelaNovoContatoController implements Initializable, ContatoObserver
     private final ContatoValidator contatoValidator = new ContatoValidator();
 
     @FXML
-    private void salvarContato() {
+    private void onBtnSalvarContato() {
         lblErroNome.setText("");
         lblErroNumero.setText("");
         lblErroEmail.setText("");
@@ -82,7 +84,19 @@ public class TelaNovoContatoController implements Initializable, ContatoObserver
             }
         }
     }
+    public void onBtnVoltarContato() {loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml");
+    }
+    private void loadView(String caminho) {
+        try {
+            Stage mainStage = App.getMainStage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(caminho));
+            Parent novaTela = loader.load();
+            mainStage.getScene().setRoot(novaTela);
 
+        } catch (IOException e) {
+            Alertas.mostrarAlerta("Erro", "Não foi possivel carregar a tela.", Alert.AlertType.ERROR);
+        }
+    }
     public void validacaoContato(ContatoDTO contatoDTO) throws ValidacaoException {
         txtNomeContato.setText("");
         txtNumero1Contato.setText("");
@@ -95,8 +109,4 @@ public class TelaNovoContatoController implements Initializable, ContatoObserver
         Restricoes.setTextFieldMaxLength(txtNumero1Contato, 9);
     }
 
-    @Override
-    public void atualizarContato() {
-
-    }
 }

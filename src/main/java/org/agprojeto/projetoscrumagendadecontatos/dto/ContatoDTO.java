@@ -1,6 +1,10 @@
 package org.agprojeto.projetoscrumagendadecontatos.dto;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class ContatoDTO {
+    private ImageView icone;
     private Integer id;
     private String nome;
     private String sobrenome;
@@ -48,6 +52,10 @@ public class ContatoDTO {
         return descricao;
     }
 
+    public ImageView getIcone() {
+        return icone;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -74,6 +82,10 @@ public class ContatoDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public void setIcone(ImageView icone) {
+        this.icone = icone;
     }
 
     @Override

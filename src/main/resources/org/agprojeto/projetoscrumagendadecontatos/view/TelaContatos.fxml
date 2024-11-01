@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.agprojeto.projetoscrumagendadecontatos.view.controller.TelaContatosController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="400.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.agprojeto.projetoscrumagendadecontatos.view.controller.TelaContatosController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="640.0" prefWidth="401.0" style="-fx-background-color: white;">
          <children>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="390.0" style="-fx-background-color: lightgray;" text="CONTATOS">
+            <Label alignment="CENTER" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: lightgray;" text="CONTATOS">
                <font>
                   <Font name="Times New Roman" size="19.0" />
                </font>
@@ -21,15 +21,15 @@
                   <InnerShadow />
                </effect>
             </Label>
-            <TableView fx:id="tableViewContato" layoutY="100.0" prefHeight="470.0" prefWidth="400.0" style="-fx-background-color: white;">
+            <TableView fx:id="tableViewContato" layoutY="80.0" prefHeight="484.0" prefWidth="400.0" style="-fx-background-color: white;">
               <columns>
                 <TableColumn fx:id="colunaIcon" prefWidth="45.60003739595413" />
                   <TableColumn fx:id="colunaNome" prefWidth="354.39997482299805" />
               </columns>
             </TableView>
-            <Button fx:id="BtnExcluir" layoutX="36.0" layoutY="573.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: red;" text="Excluir" />
-            <Button fx:id="BtnDetalhar" layoutX="157.0" layoutY="573.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Detalhar" textFill="WHITE" />
-            <Button fx:id="BtnNovo" layoutX="278.0" layoutY="573.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Novo" textFill="WHITE" />
+            <Button fx:id="BtnExcluir" layoutX="36.0" layoutY="585.0" mnemonicParsing="false" onAction="#onBtnExcluir" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: red;" text="Excluir" />
+            <Button fx:id="BtnDetalhar" layoutX="157.0" layoutY="585.0" mnemonicParsing="false" onAction="#onBtnDetalhar" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Detalhar" textFill="WHITE" />
+            <Button fx:id="BtnNovo" layoutX="278.0" layoutY="585.0" mnemonicParsing="false" onAction="#onBtnNovo" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Novo" textFill="WHITE" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

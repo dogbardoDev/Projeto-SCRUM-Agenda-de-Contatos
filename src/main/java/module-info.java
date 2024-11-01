@@ -4,6 +4,7 @@ module org.agprojeto.projetoscrumagendadecontatos {
     requires java.sql;
     requires modelmapper;
 
+    exports org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.exceptions;
     exports org.agprojeto.projetoscrumagendadecontatos.dto;
     exports org.agprojeto.projetoscrumagendadecontatos.model.entities;
     exports org.agprojeto.projetoscrumagendadecontatos.view.controller;

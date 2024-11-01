@@ -10,7 +10,9 @@ public class EmailContatoHandler extends ContatoHandler {
 
     @Override
     public ContatoDTO handle(ContatoDTO contatoDTO) {
-
+        if(contatoDTO.getEmail() == null || contatoDTO.getEmail().isEmpty()) {
+            return super.handle(contatoDTO);
+        }
         if (!contatoDTO.getEmail().matches(EMAIL_REGEX)) {
             throw new ValidacaoException("Erro ao inserir email");
         }

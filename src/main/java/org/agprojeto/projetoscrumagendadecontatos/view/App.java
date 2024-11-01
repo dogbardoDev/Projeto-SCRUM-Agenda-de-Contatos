@@ -8,16 +8,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
+    private static Stage stage;
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("TelaNovoContato.fxml"));
+        this.stage = stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("TelaContatos.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 640);
         stage.setResizable(false);
         stage.setTitle("Agenda de Contatos");
         stage.setScene(scene);
         stage.show();
     }
-
+    public static Stage getMainStage() {
+        return stage;
+    }
     public static void main(String[] args) {
         launch();
     }

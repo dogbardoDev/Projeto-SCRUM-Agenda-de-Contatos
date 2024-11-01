@@ -11,11 +11,12 @@ import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 import org.agprojeto.projetoscrumagendadecontatos.util.Restricoes;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.exceptions.ValidacaoException;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.validationcontato.ContatoValidator;
+import org.agprojeto.projetoscrumagendadecontatos.view.observer.ContatoObserver;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaNovoContatoController implements Initializable {
+public class TelaNovoContatoController implements Initializable, ContatoObserver {
 
     @FXML
     private TextField txtNomeContato;
@@ -70,6 +71,7 @@ public class TelaNovoContatoController implements Initializable {
             contatoValidator.validarContato(contato);
             contatoController.inserirContato(contato);
 
+
         } catch (ValidacaoException e) {
             if (e.getMessage().contains("nome")) {
                 lblErroNome.setText(e.getMessage());
@@ -93,4 +95,8 @@ public class TelaNovoContatoController implements Initializable {
         Restricoes.setTextFieldMaxLength(txtNumero1Contato, 9);
     }
 
+    @Override
+    public void atualizarContato() {
+
+    }
 }

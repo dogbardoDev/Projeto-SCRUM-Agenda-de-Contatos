@@ -4,6 +4,8 @@ import org.agprojeto.projetoscrumagendadecontatos.dao.ContatoDAO;
 import org.agprojeto.projetoscrumagendadecontatos.dao.DAOFactory;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 
+import java.util.List;
+
 public class ContatoController {
 
     private final ContatoDAO contatoDAO = DAOFactory.criarContatoDAO();
@@ -18,5 +20,9 @@ public class ContatoController {
 
     public void excluirContato(Integer id) {
         contatoDAO.excluirContato(id);
+    }
+
+    public List<ContatoDTO> buscarContatosParaTabelaContatos() {
+        return contatoDAO.listarTodosOsContatos();
     }
 }

@@ -39,6 +39,7 @@
                </image>
             </ImageView>
             <TextField id="TextFieldTelefone2" fx:id="txtNumero2Contato" layoutX="60.0" layoutY="78.0" prefHeight="26.0" prefWidth="270.0" promptText="(Opcional)" />
+            <Label fx:id="lblErroNumero" layoutX="111.0" layoutY="16.0" textFill="RED" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="333.0" prefHeight="100.0" prefWidth="340.0" style="-fx-background-color: gray; -fx-background-radius: 6px;">
@@ -54,6 +55,7 @@
                </image>
             </ImageView>
             <TextField fx:id="txtEmailContato" layoutX="60.0" layoutY="48.0" prefHeight="26.0" prefWidth="270.0" promptText="(Opcional)" />
+            <Label fx:id="lblErroEmail" layoutX="117.0" layoutY="22.0" textFill="RED" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="31.0" layoutY="450.0" prefHeight="115.0" prefWidth="340.0" style="-fx-background-color: gray; -fx-background-radius: 6;">
@@ -70,7 +72,7 @@
       <Button fx:id="btnSalvarContato" layoutX="236.0" layoutY="585.0" mnemonicParsing="false" onAction="#salvarContato" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: black;" text="Salvar" textFill="WHITE" />
       <AnchorPane layoutX="34.0" layoutY="105.0" prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: gray; -fx-background-radius: 6;">
          <children>
-            <Label layoutX="14.0" layoutY="4.0" text="Nome">
+            <Label layoutX="9.0" text="Nome">
                <font>
                   <Font name="Times New Roman" size="17.0" />
                </font>
@@ -81,11 +83,12 @@
                </image>
             </ImageView>
             <TextField fx:id="txtNomeContato" layoutX="46.0" layoutY="32.0" prefHeight="26.0" prefWidth="105.0" promptText="Nome" />
+            <Label fx:id="lblErroNome" layoutX="45.0" layoutY="16.0" textFill="RED" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="211.0" layoutY="105.0" prefHeight="70.0" prefWidth="160.0" style="-fx-background-color: gray; -fx-background-radius: 6;">
          <children>
-            <Label layoutX="14.0" layoutY="4.0" text="Sobrenome">
+            <Label layoutX="14.0" text="Sobrenome">
                <font>
                   <Font name="Times New Roman" size="17.0" />
                </font>

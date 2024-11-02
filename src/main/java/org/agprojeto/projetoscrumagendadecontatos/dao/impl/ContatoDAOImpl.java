@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ContatoDAOImpl implements ContatoDAO {
 
-
+    private static final String SQL_VERIFICAR_NUMERO = "SELECT 1 FROM contatos WHERE numero = ?";
     private final Connection conexao;
 
     public ContatoDAOImpl(Connection conexao) {
@@ -22,6 +22,10 @@ public class ContatoDAOImpl implements ContatoDAO {
     @Override
     public void inserirContato(ContatoDTO contatoDTO) {
         Contato contato = ContatoMapper.toEntity(contatoDTO);
+
+        if (verificarNumeroExistente(contato.getNumero())) {
+            throw new DBException("Número de contato já existe.");
+        }
 
         try (PreparedStatement stmt = conexao.prepareStatement(
                 "INSERT INTO contatos (nome, sobrenome, numero, numero2, email, descricao) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
@@ -48,6 +52,8 @@ public class ContatoDAOImpl implements ContatoDAO {
             throw new DBException("Erro ao inserir contato: " + e.getMessage() + " " + e);
         }
     }
+
+
 
     @Override
     public void atualizarContato(ContatoDTO contatoDTO) {
@@ -117,6 +123,16 @@ public class ContatoDAOImpl implements ContatoDAO {
         return contatos;
     }
 
+    private boolean verificarNumeroExistente(String numero) throws DBException {
+        try (PreparedStatement stmt = conexao.prepareStatement(SQL_VERIFICAR_NUMERO)) {
+            stmt.setString(1, numero);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            throw new DBException("Erro ao verificar número existente: " + e.getMessage() + " " + e);
+        }
+    }
 
     private ContatoDTO instaciarContato(ResultSet resultSet) throws SQLException {
         return new ContatoDTO(

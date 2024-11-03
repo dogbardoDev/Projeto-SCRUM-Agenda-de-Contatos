@@ -1,12 +1,10 @@
 package org.agprojeto.projetoscrumagendadecontatos.dao.impl;
 
-import javafx.scene.control.Alert;
 import org.agprojeto.projetoscrumagendadecontatos.dao.ContatoDAO;
 import org.agprojeto.projetoscrumagendadecontatos.db.exceptions.DBException;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 import org.agprojeto.projetoscrumagendadecontatos.mapper.ContatoMapper;
 import org.agprojeto.projetoscrumagendadecontatos.model.entities.Contato;
-import org.agprojeto.projetoscrumagendadecontatos.util.Alertas;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,7 +43,7 @@ public class ContatoDAOImpl implements ContatoDAO {
                     if (rs.next()) {
                         int id = rs.getInt(1);
                         contato.setId(id);
-                        }
+                    }
                 }
             } else {
                 throw new DBException("Erro ao inserir linha");

@@ -11,6 +11,7 @@ import org.agprojeto.projetoscrumagendadecontatos.db.exceptions.DBException;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 import org.agprojeto.projetoscrumagendadecontatos.util.Alertas;
 import org.agprojeto.projetoscrumagendadecontatos.util.Restricoes;
+import org.agprojeto.projetoscrumagendadecontatos.util.Viewer;
 import org.agprojeto.projetoscrumagendadecontatos.view.App;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.exceptions.ValidacaoException;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.validationcontato.ContatoValidator;
@@ -97,23 +98,9 @@ public class TelaNovoContatoController implements Initializable {
 
     @FXML
     private void onBtnVoltarContato() {
-        loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml");
+        Viewer.loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml");
     }
 
-    private void loadView(String caminho) {
-        try {
-            Stage mainStage = App.getMainStage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(caminho));
-            Parent novaTela = loader.load();
-            mainStage.getScene().setRoot(novaTela);
-        } catch (IOException e) {
-            Alertas.mostrarAlerta("Erro", "Não foi possível carregar a tela.", Alert.AlertType.ERROR);
-        }
-    }
-
-    public void validacaoContato(ContatoDTO contatoDTO) throws ValidacaoException {
-        contatoValidator.validarContato(contatoDTO);
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

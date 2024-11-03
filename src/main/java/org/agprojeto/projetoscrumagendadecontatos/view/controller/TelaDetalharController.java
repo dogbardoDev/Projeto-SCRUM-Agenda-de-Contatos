@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
+import org.agprojeto.projetoscrumagendadecontatos.util.Viewer;
 
 public class TelaDetalharController {
 
@@ -32,6 +33,11 @@ public class TelaDetalharController {
         txtTelefone2.setText(contato.getNumero2());
         txtEmail.setText(contato.getEmail());
         txtDescricao.setText(contato.getDescricao());
+    }
+
+    @FXML
+    private void onBtnVoltarDetalhar() {
+        Viewer.loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml");
     }
 }
 

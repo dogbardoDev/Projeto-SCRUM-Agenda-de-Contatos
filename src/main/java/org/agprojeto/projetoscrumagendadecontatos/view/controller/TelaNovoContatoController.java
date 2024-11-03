@@ -72,7 +72,7 @@ public class TelaNovoContatoController implements Initializable {
         try {
             contatoValidator.validarContato(contato);
             contatoController.inserirContato(contato);
-
+            Alertas.mostrarAlerta("Sucesso", "Contato salvo com sucesso", Alert.AlertType.INFORMATION);
 
         } catch (ValidacaoException e) {
             if (e.getMessage().contains("nome")) {

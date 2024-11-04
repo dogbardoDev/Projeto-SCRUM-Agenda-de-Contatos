@@ -1,13 +1,24 @@
 package org.agprojeto.projetoscrumagendadecontatos.view.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.agprojeto.projetoscrumagendadecontatos.controller.ContatoController;
+import org.agprojeto.projetoscrumagendadecontatos.db.exceptions.DBException;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
+import org.agprojeto.projetoscrumagendadecontatos.util.Alertas;
+import org.agprojeto.projetoscrumagendadecontatos.util.Restricoes;
 import org.agprojeto.projetoscrumagendadecontatos.util.Viewer;
+import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.exceptions.ValidacaoException;
+import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.validationcontato.ContatoValidator;
 
-public class TelaDetalharController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TelaDetalharController implements Initializable {
 
     @FXML
     private TextField txtNome;
@@ -26,7 +37,12 @@ public class TelaDetalharController {
     @FXML
     private Button btnVoltar;
 
+    private ContatoDTO contatoDTO;
+    private final ContatoValidator contatoValidator = new ContatoValidator();
+    private final ContatoController contatoController = new ContatoController();
+
     public void setContato(ContatoDTO contato) {
+        this.contatoDTO = contato;
         txtNome.setText(contato.getNome());
         txtSobrenome.setText(contato.getSobrenome());
         txtTelefone.setText(contato.getNumero());
@@ -36,8 +52,48 @@ public class TelaDetalharController {
     }
 
     @FXML
+    private void onBtnEditar() {
+        txtNome.getStyleClass().remove("error");
+        txtTelefone.getStyleClass().remove("error");
+        txtTelefone2.getStyleClass().remove("error");
+
+        contatoDTO.setNome(txtNome.getText());
+        contatoDTO.setSobrenome(txtSobrenome.getText());
+        contatoDTO.setNumero(txtTelefone.getText());
+        contatoDTO.setNumero2(txtTelefone2.getText());
+        contatoDTO.setEmail(txtEmail.getText());
+        contatoDTO.setDescricao(txtDescricao.getText());
+
+        try {
+            contatoValidator.validarContato(contatoDTO);
+            contatoController.atualizarContato(contatoDTO);
+            Alertas.mostrarAlerta("Sucesso", "Contato editado com sucesso!", Alert.AlertType.INFORMATION);
+
+        } catch (ValidacaoException e) {
+            if (e.getMessage().toLowerCase().contains("nome")) {
+                txtNome.getStyleClass().add("error");
+            } else if (e.getMessage().toLowerCase().contains("número")) {
+                txtTelefone.getStyleClass().add("error");
+            } else if (e.getMessage().toLowerCase().contains("email")) {
+                txtEmail.getStyleClass().add("error");
+            }
+        } catch (DBException e) {
+            Alertas.mostrarAlerta("Erro", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
     private void onBtnVoltarDetalhar() {
         Viewer.loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml");
     }
-}
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Restricoes.setTextFieldMaxLength(txtTelefone, 15);
+        Restricoes.setTextFieldMaxLength(txtTelefone2, 15);
+
+        if (contatoDTO != null) {
+            setContato(contatoDTO);
+        }
+    }
+}

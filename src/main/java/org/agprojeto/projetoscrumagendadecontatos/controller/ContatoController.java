@@ -25,4 +25,8 @@ public class ContatoController {
     public List<ContatoDTO> buscarContatosParaTabelaContatos() {
         return contatoDAO.listarTodosOsContatos();
     }
+
+    public ContatoDTO buscarContatoPorNumero(String numero){
+        return contatoDAO.buscarContatoPorNumero(numero);
+    }
 }

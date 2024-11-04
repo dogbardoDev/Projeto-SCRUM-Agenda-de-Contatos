@@ -8,11 +8,8 @@ public class NumeroContatoHandler extends ContatoHandler {
 
     @Override
     public ContatoDTO handle(ContatoDTO contatoDTO) {
-        if (contatoDTO.getNumero() == null || contatoDTO.getNumero().isEmpty() || contatoDTO.getNumero().length() < 14) {
+        if (contatoDTO.getNumero() == null || contatoDTO.getNumero().isEmpty() || contatoDTO.getNumero().length() < 9) {
             throw new ValidacaoException("Erro ao inserir número");
-        }
-        if (contatoDTO.getNumero().length() == 15) {
-            return contatoDTO;
         } else
             return super.handle(contatoDTO);
     }

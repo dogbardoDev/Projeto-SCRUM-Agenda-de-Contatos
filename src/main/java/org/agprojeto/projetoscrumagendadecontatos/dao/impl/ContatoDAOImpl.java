@@ -109,6 +109,26 @@ public class ContatoDAOImpl implements ContatoDAO {
     }
 
     @Override
+    public ContatoDTO buscarContatoPorNumero(String numero) {
+        String sql = "select * from contatos where numero = ?";
+        ContatoDTO contatoDTO;
+
+        try(PreparedStatement st = conexao.prepareStatement(sql)){
+            st.setString(1, numero);
+
+            try(ResultSet resultSet = st.executeQuery()){
+                if (resultSet.next()) {
+                    contatoDTO = instaciarContato(resultSet);
+                }else
+                    contatoDTO = null;
+            }
+        }catch (SQLException e){
+            throw new DBException("Erro ao buscar Contato com número = " + numero  + " " + e.getMessage());
+        }
+        return contatoDTO;
+    }
+
+    @Override
     public List<ContatoDTO> listarTodosOsContatos() {
         List<ContatoDTO> contatos = new ArrayList<>();
         try (PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM contatos");

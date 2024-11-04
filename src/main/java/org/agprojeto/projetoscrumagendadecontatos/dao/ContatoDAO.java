@@ -11,5 +11,6 @@ public interface ContatoDAO {
     void excluirContato(Integer id);
     ContatoDTO buscarContatoPorId(Integer id);
     List<ContatoDTO> listarTodosOsContatos();
+    ContatoDTO buscarContatoPorNumero(String numero);
 
 }

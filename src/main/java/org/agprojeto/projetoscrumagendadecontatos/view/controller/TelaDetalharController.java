@@ -2,10 +2,7 @@ package org.agprojeto.projetoscrumagendadecontatos.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.agprojeto.projetoscrumagendadecontatos.controller.ContatoController;
 import org.agprojeto.projetoscrumagendadecontatos.db.exceptions.DBException;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
@@ -33,6 +30,12 @@ public class TelaDetalharController implements Initializable {
     @FXML
     private TextArea txtDescricao;
     @FXML
+    private Label lblErroNome;
+    @FXML
+    private Label lblErroNumero;
+    @FXML
+    private Label lblErroEmail;
+    @FXML
     private Button btnEditar;
     @FXML
     private Button btnVoltar;
@@ -53,9 +56,13 @@ public class TelaDetalharController implements Initializable {
 
     @FXML
     private void onBtnEditar() {
+        lblErroNome.setText("");
+        lblErroNumero.setText("");
+        lblErroEmail.setText("");
+
         txtNome.getStyleClass().remove("error");
         txtTelefone.getStyleClass().remove("error");
-        txtTelefone2.getStyleClass().remove("error");
+        txtEmail.getStyleClass().remove("error");
 
         contatoDTO.setNome(txtNome.getText());
         contatoDTO.setSobrenome(txtSobrenome.getText());
@@ -72,10 +79,13 @@ public class TelaDetalharController implements Initializable {
         } catch (ValidacaoException e) {
             if (e.getMessage().toLowerCase().contains("nome")) {
                 txtNome.getStyleClass().add("error");
+                lblErroNome.setText(e.getMessage());
             } else if (e.getMessage().toLowerCase().contains("número")) {
                 txtTelefone.getStyleClass().add("error");
+                lblErroNumero.setText(e.getMessage());
             } else if (e.getMessage().toLowerCase().contains("email")) {
                 txtEmail.getStyleClass().add("error");
+                lblErroEmail.setText(e.getMessage());
             }
         } catch (DBException e) {
             Alertas.mostrarAlerta("Erro", e.getMessage(), Alert.AlertType.ERROR);
@@ -91,6 +101,8 @@ public class TelaDetalharController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Restricoes.setTextFieldMaxLength(txtTelefone, 15);
         Restricoes.setTextFieldMaxLength(txtTelefone2, 15);
+        Restricoes.setTextFieldInteger(txtTelefone);
+        Restricoes.setTextFieldInteger(txtTelefone2);
 
         if (contatoDTO != null) {
             setContato(contatoDTO);

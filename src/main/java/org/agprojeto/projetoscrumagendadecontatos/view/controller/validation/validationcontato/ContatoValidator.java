@@ -10,10 +10,12 @@ public class ContatoValidator {
     public ContatoValidator() {
         ContatoHandler nomeContatoHandler = new NomeContatoHandler();
         ContatoHandler numeroContatoHandler = new NumeroContatoHandler();
+        ContatoHandler numero2ContatoHandler = new NumeroContatoHandler();
         ContatoHandler emailContatoHandler = new EmailContatoHandler();
 
         nomeContatoHandler
                 .setNextHandler(numeroContatoHandler)
+                .setNextHandler(numero2ContatoHandler)
                 .setNextHandler(emailContatoHandler);
 
         this.firstHandler = nomeContatoHandler;

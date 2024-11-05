@@ -4,7 +4,7 @@ import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.ContatoHandler;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.exceptions.ValidacaoException;
 
-public class SobrenomeContatoHandler extends ContatoHandler {
+public class Numero2ContatoHandler extends ContatoHandler {
 
     @Override
     public ContatoDTO handle(ContatoDTO contatoDTO) {

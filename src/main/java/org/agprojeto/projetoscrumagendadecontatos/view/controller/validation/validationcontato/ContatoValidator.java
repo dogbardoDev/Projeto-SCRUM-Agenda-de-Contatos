@@ -10,7 +10,7 @@ public class ContatoValidator {
     public ContatoValidator() {
         ContatoHandler nomeContatoHandler = new NomeContatoHandler();
         ContatoHandler numeroContatoHandler = new NumeroContatoHandler();
-        ContatoHandler numero2ContatoHandler = new NumeroContatoHandler();
+        ContatoHandler numero2ContatoHandler = new Numero2ContatoHandler();
         ContatoHandler emailContatoHandler = new EmailContatoHandler();
 
         nomeContatoHandler

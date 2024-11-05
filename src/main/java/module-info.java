@@ -11,5 +11,7 @@ module org.agprojeto.projetoscrumagendadecontatos {
     opens org.agprojeto.projetoscrumagendadecontatos.view.controller to javafx.fxml;
     exports org.agprojeto.projetoscrumagendadecontatos.view;
     opens org.agprojeto.projetoscrumagendadecontatos.view to javafx.fxml;
+    exports org.agprojeto.projetoscrumagendadecontatos.application;
+    opens org.agprojeto.projetoscrumagendadecontatos.application to javafx.fxml;
 
 }

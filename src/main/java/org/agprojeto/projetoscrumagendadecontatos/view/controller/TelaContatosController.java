@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,7 +16,7 @@ import javafx.stage.Stage;
 import org.agprojeto.projetoscrumagendadecontatos.controller.ContatoController;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 import org.agprojeto.projetoscrumagendadecontatos.util.Alertas;
-import org.agprojeto.projetoscrumagendadecontatos.view.App;
+import org.agprojeto.projetoscrumagendadecontatos.application.App;
 import org.agprojeto.projetoscrumagendadecontatos.view.observer.ContatoObserver;
 
 import java.io.IOException;
@@ -45,7 +44,6 @@ public class TelaContatosController implements Initializable, ContatoObserver {
     private ObservableList<ContatoDTO> contatos;
 
 
-
     public void initialize(URL url, ResourceBundle rb) {
         controller = new ContatoController();
         colunaIcon.setCellValueFactory(new PropertyValueFactory<>("icone"));
@@ -70,6 +68,7 @@ public class TelaContatosController implements Initializable, ContatoObserver {
             e.printStackTrace();
         }
     }
+
     private void loadViewDetalhamento(String caminho) {
         try {
             Stage mainStage = App.getMainStage();
@@ -83,16 +82,18 @@ public class TelaContatosController implements Initializable, ContatoObserver {
             e.printStackTrace();
         }
     }
+
     public void atualizarTabelaContatos() {
         List<ContatoDTO> listaContatos = controller.buscarContatosParaTabelaContatos();
         contatos = FXCollections.observableList(listaContatos);
-        for(ContatoDTO contato : contatos) {
+        for (ContatoDTO contato : contatos) {
             ImageView iconeContato = new ImageView(new Image(this.getClass().getResourceAsStream("/org/agprojeto/projetoscrumagendadecontatos/icones/icons8-male-user-32.png")));
             contato.setIcone(iconeContato);
         }
         tableViewContato.setItems(contatos);
 
     }
+
     public void onBtnExcluir() {
         contatoSelecionado = tableViewContato.getSelectionModel().getSelectedItem();
         if (contatoSelecionado != null) {
@@ -109,14 +110,14 @@ public class TelaContatosController implements Initializable, ContatoObserver {
     public void onBtnDetalhar() {
         contatoSelecionado = tableViewContato.getSelectionModel().getSelectedItem();
         if (contatoSelecionado != null) {
-               loadViewDetalhamento("/org/agprojeto/projetoscrumagendadecontatos/view/TelaDetalhar.fxml");
+            loadViewDetalhamento("/org/agprojeto/projetoscrumagendadecontatos/view/TelaDetalhar.fxml");
         } else {
             Alertas.mostrarAlerta("Erro", "Selecione um contato para Detalhar!", AlertType.ERROR);
         }
     }
 
     public void onBtnNovo() {
-       loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaNovoContato.fxml");
+        loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaNovoContato.fxml");
     }
 
     @Override

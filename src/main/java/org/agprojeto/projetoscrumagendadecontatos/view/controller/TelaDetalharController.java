@@ -88,7 +88,7 @@ public class TelaDetalharController implements Initializable {
                 lblErroEmail.setText(e.getMessage());
             }
         } catch (DBException e) {
-            Alertas.mostrarAlerta("Erro", e.getMessage(), Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Erro", "Erro ao editar contato. Verifique os campos corretamente.", Alert.AlertType.ERROR);
         }
     }
 

@@ -54,11 +54,10 @@ public class ContatoDAOImpl implements ContatoDAO {
     }
 
 
-
     @Override
     public void atualizarContato(ContatoDTO contatoDTO) {
         String sql = "update contatos set nome = ?, sobrenome = ?, numero = ?, numero2 = ?, email = ?, descricao = ? where id = ?";
-        try(PreparedStatement st = conexao.prepareStatement(sql)){
+        try (PreparedStatement st = conexao.prepareStatement(sql)) {
 
             st.setString(1, contatoDTO.getNome());
             st.setString(2, contatoDTO.getSobrenome());
@@ -69,8 +68,8 @@ public class ContatoDAOImpl implements ContatoDAO {
             st.setInt(7, contatoDTO.getId());
             st.executeUpdate();
 
-        }catch (SQLException e){
-            throw new DBException("Erro ao atualizar Contato" + e.getMessage() + " | " + e );
+        } catch (SQLException e) {
+            throw new DBException("Erro ao atualizar Contato" + e.getMessage() + " | " + e);
         }
     }
 
@@ -78,12 +77,12 @@ public class ContatoDAOImpl implements ContatoDAO {
     public void excluirContato(Integer id) {
         String sql = "delete from contatos where id = ?";
 
-        try(PreparedStatement st = conexao.prepareStatement(sql)){
+        try (PreparedStatement st = conexao.prepareStatement(sql)) {
 
             st.setInt(1, id);
             st.executeUpdate();
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             throw new DBException("Erro ao excluir Contato");
         }
     }
@@ -93,16 +92,16 @@ public class ContatoDAOImpl implements ContatoDAO {
         String sql = "select * from contatos where id = ?";
         ContatoDTO contatoDTO;
 
-        try(PreparedStatement st = conexao.prepareStatement(sql)){
+        try (PreparedStatement st = conexao.prepareStatement(sql)) {
             st.setInt(1, id);
 
-            try(ResultSet resultSet = st.executeQuery()){
+            try (ResultSet resultSet = st.executeQuery()) {
                 if (resultSet.next()) {
                     contatoDTO = instaciarContato(resultSet);
-                }else
+                } else
                     contatoDTO = null;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DBException("Erro ao buscar Contato com ID = " + id + " " + e.getMessage());
         }
         return contatoDTO;
@@ -113,17 +112,17 @@ public class ContatoDAOImpl implements ContatoDAO {
         String sql = "select * from contatos where numero = ?";
         ContatoDTO contatoDTO;
 
-        try(PreparedStatement st = conexao.prepareStatement(sql)){
+        try (PreparedStatement st = conexao.prepareStatement(sql)) {
             st.setString(1, numero);
 
-            try(ResultSet resultSet = st.executeQuery()){
+            try (ResultSet resultSet = st.executeQuery()) {
                 if (resultSet.next()) {
                     contatoDTO = instaciarContato(resultSet);
-                }else
+                } else
                     contatoDTO = null;
             }
-        }catch (SQLException e){
-            throw new DBException("Erro ao buscar Contato com número = " + numero  + " " + e.getMessage());
+        } catch (SQLException e) {
+            throw new DBException("Erro ao buscar Contato com número = " + numero + " " + e.getMessage());
         }
         return contatoDTO;
     }

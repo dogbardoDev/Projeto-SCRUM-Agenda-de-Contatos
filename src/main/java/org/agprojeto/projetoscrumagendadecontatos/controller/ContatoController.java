@@ -26,7 +26,7 @@ public class ContatoController {
         return contatoDAO.listarTodosOsContatos();
     }
 
-    public ContatoDTO buscarContatoPorNumero(String numero){
+    public ContatoDTO buscarContatoPorNumero(String numero) {
         return contatoDAO.buscarContatoPorNumero(numero);
     }
 }

@@ -6,8 +6,8 @@ public abstract class ContatoHandler {
 
     protected ContatoHandler nextHandler;
 
-    public ContatoDTO handle(ContatoDTO contatoDTO){
-        if (nextHandler != null){
+    public ContatoDTO handle(ContatoDTO contatoDTO) {
+        if (nextHandler != null) {
             return nextHandler.handle(contatoDTO);
         }
         return contatoDTO;

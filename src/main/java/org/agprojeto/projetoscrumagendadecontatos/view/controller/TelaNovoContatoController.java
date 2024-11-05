@@ -1,22 +1,17 @@
 package org.agprojeto.projetoscrumagendadecontatos.view.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import org.agprojeto.projetoscrumagendadecontatos.controller.ContatoController;
 import org.agprojeto.projetoscrumagendadecontatos.db.exceptions.DBException;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 import org.agprojeto.projetoscrumagendadecontatos.util.Alertas;
 import org.agprojeto.projetoscrumagendadecontatos.util.Restricoes;
 import org.agprojeto.projetoscrumagendadecontatos.util.Viewer;
-import org.agprojeto.projetoscrumagendadecontatos.view.App;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.exceptions.ValidacaoException;
 import org.agprojeto.projetoscrumagendadecontatos.view.controller.validation.validationcontato.ContatoValidator;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -92,7 +87,7 @@ public class TelaNovoContatoController implements Initializable {
                 txtEmailContato.getStyleClass().add("error");
             }
         } catch (DBException e) {
-            Alertas.mostrarAlerta("Erro", e.getMessage(), Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Erro", "Já há um contato com esse número. Edite-o ou cadastre outro.", Alert.AlertType.ERROR);
         }
     }
 

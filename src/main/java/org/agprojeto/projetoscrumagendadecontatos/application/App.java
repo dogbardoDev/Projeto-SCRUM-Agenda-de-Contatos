@@ -1,30 +1,31 @@
 package org.agprojeto.projetoscrumagendadecontatos.application;
 
-import org.agprojeto.projetoscrumagendadecontatos.dao.ContatoDAO;
-import org.agprojeto.projetoscrumagendadecontatos.dao.DAOFactory;
-import org.agprojeto.projetoscrumagendadecontatos.db.exceptions.DBException;
-import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.util.List;
+import java.io.IOException;
 
+public class App extends Application {
+    private static Stage stage;
 
-public class App {
-    public static void main(String[] args) {
-        ContatoDAO contatoDAO = DAOFactory.criarContatoDAO();
-        ContatoDTO contatoDTO1 = new ContatoDTO(null, "dsadsa1", "dsadsa11", "321321a", "323c", "dsa1@gmail.com", "fdkjjlfdsjlçkzfs1");
-        ContatoDTO contatoDTO2 = new ContatoDTO(null, "dsadsa2", "dsadsa22", "321321b", "323b", "dsa2@gmail.com", "fdkjjlfdsjlçkzfs2");
-        ContatoDTO contatoDTO3 = new ContatoDTO(null, "dsadsa3", "dsadsa33", "321321c", "323a", "dsa3@gmail.com", "fdkjjlfdsjlçkzfs3");
-
-        try {
-            List<ContatoDTO> lista = contatoDAO.listarTodosOsContatos();
-            for (ContatoDTO contato : lista) {
-                System.out.println(contato);
-            }
-
-            ContatoDTO contatoDTO = contatoDAO.buscarContatoPorId(1);
-            System.out.println(contatoDTO);
-        } catch (DBException e) {
-            System.err.println("Erro ao inserir contato: " + e.getMessage());
-        }
+    @Override
+    public void start(Stage stage) throws IOException {
+        App.stage = stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("TelaContatos.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 640);
+        stage.setResizable(false);
+        stage.setTitle("Agenda de Contatos");
+        stage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("/org/agprojeto/projetoscrumagendadecontatos/view/error/styles/error.css").toExternalForm());
+        stage.show();
     }
+    public static Stage getMainStage() {
+        return stage;
+    }
+    public static void main(String[] args) {
+        launch();
+    }
+
 }

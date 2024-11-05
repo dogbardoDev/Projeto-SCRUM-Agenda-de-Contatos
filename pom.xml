@@ -83,7 +83,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.agprojeto.projetoscrumagendadecontatos/org.agprojeto.projetoscrumagendadecontatos.view.App
+                                org.agprojeto.projetoscrumagendadecontatos/org.agprojeto.projetoscrumagendadecontatos.application.App
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

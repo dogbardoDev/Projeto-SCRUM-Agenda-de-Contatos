@@ -101,5 +101,7 @@ public class TelaNovoContatoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Restricoes.setTextFieldMaxLength(txtNumero1Contato, 15);
         Restricoes.setTextFieldMaxLength(txtNumero2Contato, 15);
+        Restricoes.setTextFieldInteger(txtNumero1Contato);
+        Restricoes.setTextFieldInteger(txtNumero2Contato);
     }
 }

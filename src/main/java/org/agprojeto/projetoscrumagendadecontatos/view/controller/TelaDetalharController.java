@@ -74,7 +74,6 @@ public class TelaDetalharController implements Initializable {
         try {
             contatoValidator.validarContato(contatoDTO);
             contatoController.atualizarContato(contatoDTO);
-            Alertas.mostrarAlerta("Sucesso", "Contato editado com sucesso!", Alert.AlertType.INFORMATION);
             Viewer.loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml");
 
         } catch (ValidacaoException e) {

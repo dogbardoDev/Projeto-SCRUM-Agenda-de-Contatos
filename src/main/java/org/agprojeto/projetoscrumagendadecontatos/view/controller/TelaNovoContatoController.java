@@ -74,6 +74,7 @@ public class TelaNovoContatoController implements Initializable {
             contatoValidator.validarContato(contato);
             contatoController.inserirContato(contato);
             Alertas.mostrarAlerta("Sucesso", "Contato salvo com sucesso!", Alert.AlertType.INFORMATION);
+            Viewer.loadView("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml");
 
         } catch (ValidacaoException e) {
             if (e.getMessage().toLowerCase().contains("nome")) {

@@ -11,6 +11,7 @@ public class EmailContatoHandler extends ContatoHandler {
     @Override
     public ContatoDTO handle(ContatoDTO contatoDTO) {
         if (contatoDTO.getEmail() == null || contatoDTO.getEmail().isEmpty()) {
+            contatoDTO.setEmail(null);
             return super.handle(contatoDTO);
         }
         if (!contatoDTO.getEmail().matches(EMAIL_REGEX)) {

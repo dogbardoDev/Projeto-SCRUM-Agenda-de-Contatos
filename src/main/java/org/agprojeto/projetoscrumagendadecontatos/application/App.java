@@ -13,7 +13,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         App.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("TelaContatos.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/org/agprojeto/projetoscrumagendadecontatos/view/TelaContatos.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 640);
         stage.setResizable(false);
         stage.setTitle("Agenda de Contatos");

@@ -87,7 +87,7 @@ public class TelaNovoContatoController implements Initializable {
                 txtEmailContato.getStyleClass().add("error");
             }
         } catch (DBException e) {
-            Alertas.mostrarAlerta("Erro", "Já há um contato com esse número. Edite-o ou cadastre outro.", Alert.AlertType.ERROR);
+            Alertas.mostrarAlerta("Erro", "Erro inesperado. Verifique os contatos antes de inserir.", Alert.AlertType.ERROR);
         }
     }
 
@@ -101,5 +101,7 @@ public class TelaNovoContatoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Restricoes.setTextFieldMaxLength(txtNumero1Contato, 15);
         Restricoes.setTextFieldMaxLength(txtNumero2Contato, 15);
+        Restricoes.setTextFieldInteger(txtNumero1Contato);
+        Restricoes.setTextFieldInteger(txtNumero2Contato);
     }
 }

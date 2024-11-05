@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import org.agprojeto.projetoscrumagendadecontatos.controller.ContatoController;
 import org.agprojeto.projetoscrumagendadecontatos.dto.ContatoDTO;
 import org.agprojeto.projetoscrumagendadecontatos.util.Alertas;
-import org.agprojeto.projetoscrumagendadecontatos.application.App;
+import org.agprojeto.projetoscrumagendadecontatos.view.App;
 import org.agprojeto.projetoscrumagendadecontatos.view.observer.ContatoObserver;
 
 import java.io.IOException;
